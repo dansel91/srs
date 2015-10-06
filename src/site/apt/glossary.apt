@@ -1,0 +1,35 @@
+		----------
+		Glossary
+		----------
+		----------
+
+
+Glossary for the Smart Reservation System
+
+	This is the Glossary for the project Smart Reservation System. Here, the
+most important terms are captured and briefly described. It is maintained
+by the development team.
+	
+	[Administrator]		A user who manage the application. He is in charge to create 
+						accounts for editors and authors. He also creates an modify new newsletters.
+	
+	[...]				...
+							
+	[Product owner]		The product owner has all rights about the project.
+
+	[SRS]				Smart Reservation System - A software system enabling
+						associations and enterprises to book and share rooms.
+	
+	[SSD]				System Sequence Diagram - This is a way to express the behavior of a
+						system of objects.
+	
+	[Stakeholder]		A person or entity having an interest in the system.
+						See -> Subscriber; see ...
+					
+	[...]				...
+
+					
+
+	
+
+	

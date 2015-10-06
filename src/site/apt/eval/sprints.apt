@@ -1,0 +1,46 @@
+		-----------
+		Sprint Plan
+		-----------
+		Eric Dubuis
+		--------------
+		October 3, 2015
+		--------------
+
+
+Sprint Plan of Project Smart Reservation System
+
+* Introduction
+
+	The goal of this project is to simulate the incremental, iterative,
+and agile software development process SCRUM. It is incremental in the sense
+that functionality (and, thus, business value) is provided in an
+incremental manner. It is iterative in so far that many development
+activities (use case modeling, design, coding, testing, documentation, ...)
+occur repeatedly. It is agile such that changes in customer requirements
+can be handled (rather) easily.
+
+
+* Schedule of Sprints
+
+	The following sprints and deliverables are planned:
+
+*-----------------------------------------------+---------------*-----------------*
+| Sprint/Deliverable							| Due date		| Points		  |
+*-----------------------------------------------+---------------*-----------------*
+| Sprint 1/{{{./s1.html}Deliverable 1 (D1)}}	| TBD			| 		 5		  |
+*-----------------------------------------------+---------------*-----------------*
+| Sprint 2/{{{./s2.html}Deliverable 2 (D2)}}	| TBD			|		15		  |
+*-----------------------------------------------+---------------*-----------------*
+| Sprint 3/{{{./s3.html}Deliverable 3 (D3)}}	| TBD			|		15		  |
+*-----------------------------------------------+---------------*-----------------*
+| Sprint 4/{{{./s4.html}Deliverable 4 (D4)}}	| TBD			|		15		  |
+*-----------------------------------------------:---------------*-----------------*
+|										Total 	| 				|		50		  |
+*-----------------------------------------------+---------------*-----------------*
+Planning of sprints and deliverables.
+
+
+	[Note:]	Each deadline is Friday evening. However, you can provide
+			your deliverables till the following Sunday evening, 12 pm.
+
+

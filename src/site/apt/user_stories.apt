@@ -1,0 +1,47 @@
+		----------
+		User Stories
+		----------
+		due1
+		----------
+		October 03, 2015
+
+User Stories
+
+	This document describes the (initial) set of user stories as well as the
+roles users have when using the Smart Reservation System (SRS).
+
+* 1. Roles
+
+	Describe the roles you have identified. I recommend to use a definition
+list:
+
+	[Role 1] Description of Role 1.
+
+
+* 2. User Stories
+
+	Describe the user stories you have identified so far. Provide a table,
+and number the stories. Provide a short text for each user story by using
+the format as presented in the script. In the last column, provide one
+or more criteria which can be used to validate whether the user story is
+correctly implemented.
+
+
+
+*-----------+---------------------------------------+---------------------------+
+| <<No>>	| <<Description>>						| <<Validation>>			|
+*-----------+---------------------------------------+---------------------------+
+| 01		| As <Regular User>, I would like to	| Validation 01 goes here...|
+| 			| book a resource \| room etc. ...		|							|
+*-----------+---------------------------------------+---------------------------+
+| 02		| As <Role x>, I would like to			| Validation 02 goes here...|
+| 			| ...									|							|
+*-----------+---------------------------------------+---------------------------+
+| 03		| ...									| Validation 03 goes here...|
+| 			| 										|							|
+*-----------+---------------------------------------+---------------------------+
+
+
+* 3. Open Issues
+
+	Add here any open issues, if any.
