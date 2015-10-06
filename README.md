@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/imscaradh/srs.svg)](https://travis-ci.org/imscaradh/srs)
+[![codecov.io](http://codecov.io/github/imscaradh/srs/coverage.svg?branch=master)](http://codecov.io/github/imscaradh/srs?branch=master)
 # SRS Store
 This repo provides a dynamic reservation system for different environments. The project is build with maven and uses JavaFX. 
 
