@@ -1,26 +1,32 @@
-		----------
-		User Stories
-		----------
-		due1
-		----------
-		October 03, 2015
+    ----------
+    User Stories
+    ----------
+    due1
+    ----------
+    October 03, 2015
 
 User Stories
 
-	This document describes the (initial) set of user stories as well as the
+  This document describes the (initial) set of user stories as well as the
 roles users have when using the Smart Reservation System (SRS).
 
 * 1. Roles
 
-	Describe the roles you have identified. I recommend to use a definition
+  Describe the roles you have identified. I recommend to use a definition
 list:
 
-	[Role 1] Description of Role 1.
+  [Super User] Is the admin of the software.
+
+  [Resource Manager] Can manage the resources.
+
+  [Member] The normal user of the system.
+
+  [Anonymous] Is able to register himself.
 
 
 * 2. User Stories
 
-	Describe the user stories you have identified so far. Provide a table,
+  Describe the user stories you have identified so far. Provide a table,
 and number the stories. Provide a short text for each user story by using
 the format as presented in the script. In the last column, provide one
 or more criteria which can be used to validate whether the user story is
@@ -28,18 +34,57 @@ correctly implemented.
 
 
 
-*-----------+---------------------------------------+---------------------------+
-| <<No>>	| <<Description>>						| <<Validation>>			|
-*-----------+---------------------------------------+---------------------------+
-| 01		| As <Regular User>, I would like to	| Validation 01 goes here...|
-| 			| book a resource \| room etc. ...		|							|
-*-----------+---------------------------------------+---------------------------+
-| 02		| As <Role x>, I would like to			| Validation 02 goes here...|
-| 			| ...									|							|
-*-----------+---------------------------------------+---------------------------+
-| 03		| ...									| Validation 03 goes here...|
-| 			| 										|							|
-*-----------+---------------------------------------+---------------------------+
+*------+---------------+--------------+-------+
+|<<No>>|<<Description>>|<<Success>>|<<Failed>>|
+*------+---------------+--------------+-------+
+|01|As <Super User> I would like to be able to add user, so that the user can login.|The user is created and I am notified of its creation.|The user isn’t created and a error message appears|
+*--+---------------------------------------------------------+-----------+-----------+
+|02|As <Super User> I want to confirm self-registrations, so that the user can log in.|The user is given the Member Role and is now able to reserve resources.|A error message appears that informs me of my mistakes.|
+*--+---------------------------------------------------------+-----------+-----------+
+|03|As <Super User> I want be able to disable users, so the user can no longer log in.|The user is disabled and no longer capable of logging in.|A error message appears and makes me feel bad for my failure.
+*--+---------------------------------------------------------+-----------+-----------+
+|04|As <Super User> I want to delete a user, so that the user is deleted from the system.|The user is removed and is no longer capable of reserving resources. Also his existing reservations are removed.|I am informed why the user couldn’t be deleted.|
+*--+---------------------------------------------------------+-----------+-----------+
+|05|As <Super User> I want to enable a disabled user, so that the user can login again.|The user is enabled again and capable of logging in.|A message box appears and shows me the problems which were encountered.|
+*--+---------------------------------------------------------+-----------+-----------+
+|06|As <Resource Manager> I want to be to add add new resources to the system, so that members can reserve the new resource.|The resource is added and the members are able to reserve it.|A message box appears and shows me the errors.|
+*--+---------------------------------------------------------+-----------+-----------+
+|07|As <Resource Manager> I want to be able to delete an existing resource, so that the resource and all its reservations are gone.|The resource and all reservations belonging to it are removed.|A messagebox is shown and tells me of its failure.|
+*--+---------------------------------------------------------+-----------+-----------+
+|08|As <Resource Manager> I want to be able to modify existing resources, so that i can correct wrong entered data.|The newly entered data is now displayed.|The errors are displayed in a messagebox.|
+*--+---------------------------------------------------------+-----------+-----------+
+|09|As <Resource Manager> I want to be able to add new time frames to an existing resource, so that a member can reserve the new resource with the new time frame.|The resource is now available for booking in the new created timeframe.|The errors are displayed in a message box.|
+*--+---------------------------------------------------------+-----------+-----------+
+|10|As <Resource Manager> I want to be able to modify a time frame of a resource, so that a member can reserve the resource with the modified time frame.|The user can make reservations within the modified time frame.|The errors are displayed in a message box.|
+*--+---------------------------------------------------------+-----------+-----------+
+|11|As <Resource Manager> I want to be able to delete a time frame, so that the time frame no longer appears in this resource.|The selected timeframe should be deleted and all dependencies are removed. The user will be notified.|A message box shows up and tells me that the time frame couldn’t be deleted.|
+*--+---------------------------------------------------------+-----------+-----------+
+|12|As <Member> I want to be able to add a new reservation, so that a resource is reserved till the reservation ends.|The object is reserved for the entered time.|A message box appears with the errors.|
+*--+---------------------------------------------------------+-----------+-----------+
+|13|As <Member> I want to be able to add a new recurring event, so that a resource is recurring reserved through me.|The object is added for a set time and is repeated by regular intervals|An error message box shows up and tells me that it didn’t work like planned.|
+*--+---------------------------------------------------------+-----------+-----------+
+|14|As <Member> I want to be able to delete an existing reservation, so that the resource is given free.|The reservation is removed and the resource is again available for reservation.|An error message occurs and shows me a dialog that says sorry.|
+*--+---------------------------------------------------------+-----------+-----------+
+|15|As <Member> I want to be able to delete a recurring reservation, so that all recurrence are gone.|All reservations of this type are deleted.|A box appears that the reservation couldn’t be deleted.|
+*--+---------------------------------------------------------+-----------+-----------+
+|16|As <Member> I want to be able to delete a single recurring reservation, so that only this recurrence is deleted.|A single occurence of an reservation is skipped.|A box appears that the reservation couldn’t be deleted.|
+*--+---------------------------------------------------------+-----------+-----------+
+|17|As <Member> I want to be able to modify an existing reservation, so that i can change its start and end time/date.|The new data is now visible. The reservation has been modified.|A box appears that the reservation couldn’t be modified.|
+*--+---------------------------------------------------------+-----------+-----------+
+|18|As <Member> I want to be able to modify a recurring reservation, so that all recurrence are modified.|All reservation of this recurrence now have the new data.|A box appears that the reservation couldn’t be modified.|
+*--+---------------------------------------------------------+-----------+-----------+
+|19|As <Member> I want to be able to see an overview of all the reservations from all members on all resources.|A calendar with all reservations of a certain resource is displayed.|A message box appears and tells me, that the view is not available.|
+*--+---------------------------------------------------------+-----------+-----------+
+|20|As <Member> I want to be able to see an overview of my reservation, so that i can see when i have reserved resources.|All of my reservations are displayed.|A message box appears and tells me, that this view is not available.|
+*--+---------------------------------------------------------+-----------+-----------+
+|21|As <Member> I want to be able to see an overview of all my reservations of this month, so that i can see what events await me in the near future.|A calendar with all my reservations of the next month is displayed.|A message box appears and tells me, that this view is not available.|
+*--+---------------------------------------------------------+-----------+-----------+
+|22|As <Member> I want to be able to log in the system, so i can fully enjoy my permitted rights and do what has been allowed to me.|I am logged in and have access to the ressources and am able to reserve them.|A pop up appears and tells me that i can’t log in and why.|
+*--+---------------------------------------------------------+-----------+-----------+
+|23|As <Anonymous> I want to be able to register my self to the system, so that the Super User can give me access to it.|I am registered and the superuser gets notified so he can confirm my status.|A message box appears that the registration failed.|
+*--+---------------------------------------------------------+-----------+-----------+
+
+
 
 
 * 3. Open Issues
