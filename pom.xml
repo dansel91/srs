@@ -15,49 +15,70 @@
     </properties>
     <developers>
         <developer>
-            <id>Abbreviation1</id>
-            <name>FirstName1 Name1</name>
-            <email>E-Mail Address1</email>
+            <id>hirtd2</id>
+            <name>Daniel Hirt</name>
+            <email>hirtd2@bfh.ch</email>
             <organization>Berner Fachhochschule / TI</organization>
             <organizationUrl>http://www.ti.bfh.ch/</organizationUrl>
             <roles>
                 <role>SCRUM master</role>
                 <role>software developer</role>
             </roles>
-            <timezone>+1</timezone>
+            <properties>
+              <picUrl>http://i.imgur.com/qvvhmlH.jpg</picUrl>
+            </properties>
         </developer>
         <developer>
-            <id>Abbreviation2</id>
-            <name>FirstName2 Name2</name>
-            <email>E-Mail Address2</email>
+            <id>tscht3</id>
+            <name>Timon Tschanz</name>
+            <email>tscht3@bfh.ch</email>
             <organization>Berner Fachhochschule / TI</organization>
             <organizationUrl>http://www.ti.bfh.ch/</organizationUrl>
             <roles>
                 <role>software developer</role>
             </roles>
-            <timezone>+1</timezone>
+            <properties>
+              <picUrl>http://i.imgur.com/ZRIkXnW.jpg</picUrl>
+            </properties>
         </developer>
         <developer>
-            <id>Abbreviation3</id>
-            <name>FirstName3 Name3</name>
-            <email>E-Mail Address3</email>
+            <id>zingp1</id>
+            <name>Pascal Zingg</name>
+            <email>zingp1@bfh.ch</email>
             <organization>Berner Fachhochschule / TI</organization>
             <organizationUrl>http://www.ti.bfh.ch/</organizationUrl>
             <roles>
                 <role>software developer</role>
             </roles>
-            <timezone>+1</timezone>
+            <properties>
+              <picUrl>http://i.imgur.com/ZRIkXnW.jpg</picUrl>
+            </properties>
         </developer>
         <developer>
-            <id>Abbreviation4</id>
-            <name>FirstName4 Name4</name>
-            <email>E-Mail Address4</email>
+            <id>tuscm2</id>
+            <name>Michel Tüscher</name>
+            <email>tuscm2@bfh.ch</email>
             <organization>Berner Fachhochschule / TI</organization>
             <organizationUrl>http://www.ti.bfh.ch/</organizationUrl>
             <roles>
                 <role>software developer</role>
             </roles>
-            <timezone>+1</timezone>
+            <properties>
+              <picUrl>http://i.imgur.com/ZRIkXnW.jpg</picUrl>
+            </properties>
+        </developer>
+        <developer>
+            <id>dalln1</id>
+            <name>Nate Dalliard</name>
+            <email>dalln1@bfh.ch</email>
+            <organization>Berner Fachhochschule / TI</organization>
+            <organizationUrl>http://www.ti.bfh.ch/</organizationUrl>
+            <roles>
+                <role>software developer</role>
+            </roles>
+            <properties>
+              <picUrl>http://i.imgur.com/XWvK8Nc.jpg</picUrl>
+            </properties>
         </developer>
     </developers>
     <dependencies>
