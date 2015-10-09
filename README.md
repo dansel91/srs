@@ -3,6 +3,8 @@
 # SRS Store
 This repo provides a dynamic reservation system for different environments. The project is build with maven and uses JavaFX. 
 
+For more informations about the project, see [Maven Site of the Smart Reservation System](https://s3.eu-central-1.amazonaws.com/travisupload/srs/index.html)
+
 ## Setup
 Your system should have installed the following software:
 * Maven 3+: [Install instructions](https://maven.apache.org/install.html)

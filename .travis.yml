@@ -1,7 +1,20 @@
 language: java
+install: mvn install site -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 jdk:
-    - oraclejdk8
+- oraclejdk8
 before_install:
-    - pip install --user codecov
+- pip install --user codecov
 after_success:
-    - codecov
+- codecov
+deploy:
+  provider: s3
+  skip_cleanup: true
+  access_key_id: AKIAI4BXES5JJYZLBHDQ
+  secret_access_key:
+    secure: Mhq7JbDpxHDICgvV/lIHldfDkkqlOeIAI9D9rqr8KbEY5twCIgJxLM9mNQ0LBR825obQ1+cQK4gAKw/QeukQSdbZPTLk+uUdCsE+ruHLK+TCpFPe2ApEC58bziRuMbGuao89ar8QR2WDH6LlZAnT9heS5mQJ+SoOzJ1MyppnSrpuy98ZENj9g5sF3P6kfqlSd15ruvSH6f7z998LEYXHYRyfQX5rNe/hyDduz/RtBgXl6hlRYpJ2DAuvCDsNwcH4RpCIPWt8UsyFhqIfaeWQvZ7ycbk6B+nAgTxvRHSyXQnDH860nvBwmsE4c7/TRJ9TTyG84JvGx+z3VCw9VJCC5/BinRk9rgq4a0AOCN1OkvN2DVzWslPvXH5qrFRLH1zXGxeo+rW3UO7BsSiPmC/dt8GjEWVdkGF+5PyyH3apJbBVCvra+nbga4VAIOqy96xhupFGNyRvWw7qQV8vHNM3HmMcYg8S8IoM7BcYZiwpMa3rCx/nc8phaEaDH7Ta0qCCDkQbcmEkz6OLYjUeaQRzQT4nXwznczuVPVh00r81QkwsNaKL36pLrA6ePd0PLHJlm2xCdC3CiPw8RciicUv0laCYaMHHnR6ecZ1oiOq7OK0/C96U0360r5GAwtOH3WTEgFMEtLrYq+N3GJlB0XC7SkXeNLYqN3Ip2nIRjqmcjQM=
+  bucket: "travisupload"
+  local-dir: "target/site"
+  upload-dir: "srs"
+  acl: public_read
+  on:
+      branch: master
