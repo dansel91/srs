@@ -17,4 +17,4 @@ deploy:
   upload-dir: "srs"
   acl: public_read
   on:
-      all_branches: true
+      branch: master
