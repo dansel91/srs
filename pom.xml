@@ -25,7 +25,7 @@
                 <role>software developer</role>
             </roles>
             <properties>
-              <picUrl>http://i.imgur.com/qvvhmlH.jpg</picUrl>
+              <picUrl>./images/sm.jpg</picUrl>
             </properties>
         </developer>
         <developer>
@@ -38,7 +38,7 @@
                 <role>software developer</role>
             </roles>
             <properties>
-              <picUrl>http://i.imgur.com/ZRIkXnW.jpg</picUrl>
+              <picUrl>./images/developer.jpg</picUrl>
             </properties>
         </developer>
         <developer>
@@ -51,7 +51,7 @@
                 <role>software developer</role>
             </roles>
             <properties>
-              <picUrl>http://i.imgur.com/ZRIkXnW.jpg</picUrl>
+              <picUrl>./images/developer.jpg</picUrl>
             </properties>
         </developer>
         <developer>
@@ -64,7 +64,7 @@
                 <role>software developer</role>
             </roles>
             <properties>
-              <picUrl>http://i.imgur.com/ZRIkXnW.jpg</picUrl>
+              <picUrl>./images/developer.jpg</picUrl>
             </properties>
         </developer>
         <developer>
@@ -77,7 +77,7 @@
                 <role>software developer</role>
             </roles>
             <properties>
-              <picUrl>http://i.imgur.com/XWvK8Nc.jpg</picUrl>
+              <picUrl>./images/handicapped.jpg</picUrl>
             </properties>
         </developer>
     </developers>
