@@ -24,19 +24,19 @@ can be handled (rather) easily.
 
 	The following sprints and deliverables are planned:
 
-*-----------------------------------------------+---------------*-----------------*
-| Sprint/Deliverable							| Due date		| Points		  |
-*-----------------------------------------------+---------------*-----------------*
-| Sprint 1/{{{./s1.html}Deliverable 1 (D1)}}	| Oct. 16, 2015	| 		 5		  |
-*-----------------------------------------------+---------------*-----------------*
-| Sprint 2/{{{./s2.html}Deliverable 2 (D2)}}	| Nov. 6, 2015	|		15		  |
-*-----------------------------------------------+---------------*-----------------*
-| Sprint 3/{{{./s3.html}Deliverable 3 (D3)}}	| Nov. 27, 2015	|		15		  |
-*-----------------------------------------------+---------------*-----------------*
-| Sprint 4/{{{./s4.html}Deliverable 4 (D4)}}	| Dec. 18, 2015	|		15		  |
-*-----------------------------------------------:---------------*-----------------*
+*-----------------------------------------------+---------------*-----------------*-----------------*
+| Sprint/Deliverable							| Due date		| Points		  | Git tag			|
+*-----------------------------------------------+---------------*-----------------*-----------------*
+| Sprint 1/{{{./s1.html}Deliverable 1 (D1)}}	| Oct. 16, 2015	| 		 5		  | del1			|
+*-----------------------------------------------+---------------*-----------------*-----------------*
+| Sprint 2/{{{./s2.html}Deliverable 2 (D2)}}	| Nov. 6, 2015	|		15		  | del2			|
+*-----------------------------------------------+---------------*-----------------*-----------------*
+| Sprint 3/{{{./s3.html}Deliverable 3 (D3)}}	| Nov. 27, 2015	|		15		  | del3			|
+*-----------------------------------------------+---------------*-----------------*-----------------*
+| Sprint 4/{{{./s4.html}Deliverable 4 (D4)}}	| Dec. 18, 2015	|		15		  | del4			|
+*-----------------------------------------------:---------------*-----------------*-----------------*
 |										Total 	| 				|		50		  |
-*-----------------------------------------------+---------------*-----------------*
+*-----------------------------------------------+---------------*-----------------*-----------------*
 Planning of sprints and deliverables.
 
 
@@ -44,3 +44,32 @@ Planning of sprints and deliverables.
 			your deliverables till the following Sunday evening, 12 pm.
 
 
+* Deliverables and Git Branches
+
+	Here I give a few rules how to work with Git branches:
+
+	* Performing the first sprint "Sprint 1", you work on the master. (If you
+		have already introduced branches, make sure the relevant stuff is
+		merged onto the master branch.)
+
+	* To produce the first deliverable "del1", tag the deliverable on the master
+		branch. The tagged version will be evaluated.
+
+	* From that tagged version, create the branch "development". This branch will
+		be used during the forthcoming sprints. The build server will be bound
+		to this branch.
+
+	* To produce the deliverable "k", k > 1, merge the content of branch
+		development to the master branch and tag it accordingly.
+
+	[]
+
+	The branches of the Git repository may then look like:
+
+---
+development      +----+------+------+     development
+                /      \      \      \
+master     ----+--------+------+------+-  master
+               ^        ^      ^      ^
+tags          del1     del2   del3   del4
+---
