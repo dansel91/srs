@@ -3,19 +3,30 @@ package ch.bfh.innovation;
 import com.calendarfx.model.Calendar;
 import com.calendarfx.model.Calendar.Style;
 import com.calendarfx.model.CalendarSource;
+import com.calendarfx.util.CalendarFX;
 import com.calendarfx.view.CalendarView;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class CalendarApp extends Application {
+    private static Logger log = LoggerFactory.getLogger(CalendarApp.class);
+    
+    public static final String LICENSEKEY_LOC = ".calendarfx/licensekey";
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        loadLicense();
 
         CalendarView calendarView = new CalendarView();
         Calendar birthdays = new Calendar("Birthdays");
@@ -60,6 +71,19 @@ public class CalendarApp extends Application {
         primaryStage.setHeight(1000);
         primaryStage.centerOnScreen();
         primaryStage.show();
+    }
+
+    private void loadLicense() throws IOException {
+        String userHome = System.getProperty("user.home");
+        String pathToLicense = String.format("%s/%s", userHome, LICENSEKEY_LOC);
+        Path path = Paths.get(pathToLicense);
+        if (Files.exists(path)) {
+            String license = new String(Files.readAllBytes(path));
+            CalendarFX.setLicenseKey(license);
+        } else {
+            log.warn("No license key detected, shutting down application...");
+            System.exit(0);
+        }
     }
 
     public static void main(String[] args) {
