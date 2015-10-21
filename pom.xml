@@ -166,22 +166,6 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>com.zenjava</groupId>
-                <artifactId>javafx-maven-plugin</artifactId>
-                <version>8.1.2</version>
-                <configuration>
-                    <mainClass>ch.some_package.SomeMain</mainClass>
-                </configuration>
-                <!-- See: http://stackoverflow.com/questions/19407959/javafx-maven-plugin-and-api-incompatibility -->
-                <dependencies>
-                    <dependency>
-                        <groupId>org.twdata.maven</groupId>
-                        <artifactId>mojo-executor</artifactId>
-                        <version>2.2.0</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <executions>
@@ -220,8 +204,11 @@
                                 <report>project-team</report>
                             </reports>
                         </plugin>
-                        <!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> 
-							<version>2.9.1</version> </plugin> -->
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-javadoc-plugin</artifactId>
+							<version>2.10.3</version>
+						</plugin>
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-surefire-report-plugin</artifactId>
@@ -245,14 +232,14 @@
                             <artifactId>jdepend-maven-plugin</artifactId>
                             <version>2.0</version>
                         </plugin>
-                        <!-- Note: Two Checkstyle reports are generated. Don't know yet why. -->
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-checkstyle-plugin</artifactId>
-                            <version>2.16</version>
+                            <version>2.17</version>
                             <configuration>
                                 <configLocation>src/checkstyle/checkstyle-configuration.xml</configLocation>
                                 <headerLocation>src/checkstyle/checkstyle-header.txt</headerLocation>
+ 								<failsOnError>false</failsOnError>
                             </configuration>
                             <reportSets>
                                 <reportSet>
