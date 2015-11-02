@@ -5,7 +5,7 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.innovation;
+package ch.bfh.srs.gui.javafx;
 
 import com.calendarfx.model.Calendar;
 import com.calendarfx.model.Calendar.Style;
