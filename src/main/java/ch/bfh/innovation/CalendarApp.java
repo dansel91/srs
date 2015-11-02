@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2015 Berner Fachhochschule, Switzerland.
+ *
+ * Project Smart Reservation System.
+ *
+ * Distributable under GPL license. See terms of license at gnu.org.
+ */
 package ch.bfh.innovation;
 
 import com.calendarfx.model.Calendar;
@@ -21,7 +28,7 @@ import java.time.LocalTime;
 
 public class CalendarApp extends Application {
     private static Logger log = LoggerFactory.getLogger(CalendarApp.class);
-    
+
     public static final String LICENSEKEY_LOC = ".calendarfx/licensekey";
 
     @Override
@@ -90,3 +97,4 @@ public class CalendarApp extends Application {
         launch(args);
     }
 }
+
