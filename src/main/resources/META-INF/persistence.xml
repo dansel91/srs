@@ -8,8 +8,17 @@
 
         <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
 
+        <class>ch.bfh.srs.srv.entity.Exclusion</class>
+        <class>ch.bfh.srs.srv.entity.Organisation</class>
+        <class>ch.bfh.srs.srv.entity.Recursion</class>
+        <class>ch.bfh.srs.srv.entity.Reservation</class>
+        <class>ch.bfh.srs.srv.entity.User</class>
+        <class>ch.bfh.srs.srv.entity.Role</class>
+        <class>ch.bfh.srs.srv.entity.Resource</class>
+        <class>ch.bfh.srs.srv.entity.Timeframe</class>
+
         <properties>
-            <property name="openjpa.ConnectionURL" value="jdbc:postgresql://localhost:5432/srs"/>
+            <property name="openjpa.ConnectionURL" value="jdbc:postgresql://localhost:5432/postgres"/>
             <property name="openjpa.jdbc.DBDictionary" value="postgres"/>
             <property name="openjpa.ConnectionDriverName" value="org.postgresql.Driver"/>
             <property name="openjpa.ConnectionUserName" value="postgres"/>

@@ -10,16 +10,26 @@ package ch.bfh.srs.srv.entity;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 
+@NamedQueries({
+        @NamedQuery(name = "usr.all",
+                query = "select t from User t")
+})
 @Entity
+@Table(name = "\"user\"")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
     private Integer idUser;
 
@@ -39,13 +49,20 @@ public class User {
     @Column(name = "mail")
     private String mail;
 
-    @OneToMany(mappedBy = "user", targetEntity = Reservation.class,
-            fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", targetEntity = Reservation.class)
     private List<Reservation> reservations;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "role_id", referencedColumnName = "id_role")
     private Role role;
+
+    public Integer getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
+    }
 
     public String getPassword() {
         return password;

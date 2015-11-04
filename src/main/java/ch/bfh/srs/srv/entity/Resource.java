@@ -11,18 +11,27 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import java.util.List;
 
+@NamedQueries({
+        @NamedQuery(name = "rsc.all",
+                query = "select t from Resource t")
+})
 @Entity
 public class Resource {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_resource")
     private Integer idResource;
 
@@ -34,16 +43,13 @@ public class Resource {
     @JoinColumn(name = "organisation_id", referencedColumnName = "id_organisation")
     private Organisation organisation;
 
-    @OneToMany(mappedBy = "resource", targetEntity = Reservation.class,
-            fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "resource", targetEntity = Reservation.class)
     private List<Reservation> reservations;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "resourcetimeframe",
-            joinColumns =
-            @JoinColumn(name = "resource_id", referencedColumnName = "id_resource"),
-            inverseJoinColumns =
-            @JoinColumn(name = "timeframe_id", referencedColumnName = "id_timeframe")
+            joinColumns = @JoinColumn(name = "resource_id", referencedColumnName = "id_resource"),
+            inverseJoinColumns = @JoinColumn(name = "timeframe_id", referencedColumnName = "id_timeframe")
     )
     private List<Timeframe> timeframes;
 

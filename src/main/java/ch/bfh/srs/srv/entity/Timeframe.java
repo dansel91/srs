@@ -11,16 +11,25 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import java.sql.Timestamp;
 import java.util.List;
 
+@NamedQueries({
+        @NamedQuery(name = "tf.all",
+                query = "select t from Timeframe t")
+})
 @Entity
 public class Timeframe {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_timeframe")
     private Integer idTimeframe;
 
@@ -29,19 +38,17 @@ public class Timeframe {
     private String name;
 
     @Basic
-    @Column(name = "start")
+    @Column(name = "stmp_start")
     private Timestamp start;
 
     @Basic
-    @Column(name = "end")
+    @Column(name = "stmp_end")
     private Timestamp end;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "resourcetimeframe",
-            joinColumns =
-            @JoinColumn(name = "timeframe_id", referencedColumnName = "id_timeframe"),
-            inverseJoinColumns =
-            @JoinColumn(name = "resource_id", referencedColumnName = "id_resource")
+            joinColumns = @JoinColumn(name = "timeframe_id", referencedColumnName = "id_timeframe"),
+            inverseJoinColumns = @JoinColumn(name = "resource_id", referencedColumnName = "id_resource")
     )
     private List<Resource> resources;
 

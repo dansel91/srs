@@ -100,6 +100,13 @@
             <version>2.4.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.4-1205-jdbc42</version>
+        </dependency>
+
+
         <!-- Apache Commons -->
         <dependency>
             <groupId>commons-lang</groupId>
