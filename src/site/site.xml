@@ -32,6 +32,8 @@
 			<item name="User Stories" href="user_stories.html" />
       <item name="Domain Model" href="domain_model.html" />
       <item name="Context View" href="context_view.html" />
+      <item name="Entity Relationship Diagram" href="erd.html" />
+      <item name="Server Services" href="server_services.html" />
 			<!--
 			<item name="System Sequence Diagram" href="system_sequence_diagram.html" />
 			<item name="Detailed Design Document" href="detailed_design_document.html" />
