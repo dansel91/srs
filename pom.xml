@@ -83,6 +83,21 @@
         </developer>
     </developers>
     <dependencies>
+
+        <!--Java EE-->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+        </dependency>
+
+        <!--Java Persistence API-->
+        <dependency>
+            <groupId>org.apache.openjpa</groupId>
+            <artifactId>openjpa</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+
         <!-- Apache Commons -->
         <dependency>
             <groupId>commons-lang</groupId>
@@ -204,11 +219,11 @@
                                 <report>project-team</report>
                             </reports>
                         </plugin>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-javadoc-plugin</artifactId>
-							<version>2.10.3</version>
-						</plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-javadoc-plugin</artifactId>
+                            <version>2.10.3</version>
+                        </plugin>
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-surefire-report-plugin</artifactId>
@@ -239,7 +254,7 @@
                             <configuration>
                                 <configLocation>src/checkstyle/checkstyle-configuration.xml</configLocation>
                                 <headerLocation>src/checkstyle/checkstyle-header.txt</headerLocation>
- 								<failsOnError>false</failsOnError>
+                                <failsOnError>false</failsOnError>
                             </configuration>
                             <reportSets>
                                 <reportSet>
