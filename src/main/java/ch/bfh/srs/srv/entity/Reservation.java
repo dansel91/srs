@@ -31,7 +31,7 @@ public class Reservation {
 
     @Basic
     @Column(name = "full_day")
-    private Timestamp fullDay;
+    private Boolean fullDay;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "resource_id", referencedColumnName = "id_resource")
@@ -57,11 +57,11 @@ public class Reservation {
         this.to = to;
     }
 
-    public Timestamp getFullDay() {
+    public Boolean getFullDay() {
         return fullDay;
     }
 
-    public void setFullDay(Timestamp fullDay) {
+    public void setFullDay(Boolean fullDay) {
         this.fullDay = fullDay;
     }
 
