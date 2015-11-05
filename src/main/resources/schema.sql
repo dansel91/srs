@@ -63,15 +63,3 @@ CREATE TABLE resourcetimeframe (
   timeframe_id INT REFERENCES timeframe (id_timeframe) /*NOT NULL*/,
   PRIMARY KEY (resource_id, timeframe_id)
 );
-
--- routines
-CREATE OR REPLACE FUNCTION public.truncate_tables(username IN VARCHAR) RETURNS void AS $$
-DECLARE
-  stmt RECORD;
-BEGIN
-  FOR stmt IN SELECT tablename FROM pg_tables
-  WHERE tableowner = username AND schemaname = 'public' LOOP
-    execute 'TRUNCATE TABLE public.' || quote_ident(stmt.tablename) ||' cascade;';
-  END LOOP;
-END;
-$$ LANGUAGE plpgsql;

@@ -62,6 +62,13 @@ public class DatabaseTest {
     }
 
     private void truncateAllTables() {
-        em.createNativeQuery("select truncate_tables('postgres')").getSingleResult();
+        em.createNativeQuery("truncate exclusion cascade").executeUpdate();
+        em.createNativeQuery("truncate organisation cascade").executeUpdate();
+        em.createNativeQuery("truncate recursion cascade").executeUpdate();
+        em.createNativeQuery("truncate reservation cascade").executeUpdate();
+        em.createNativeQuery("truncate resource cascade").executeUpdate();
+        em.createNativeQuery("truncate role cascade").executeUpdate();
+        em.createNativeQuery("truncate timeframe cascade").executeUpdate();
+        em.createNativeQuery("truncate \"user\" cascade").executeUpdate();
     }
 }

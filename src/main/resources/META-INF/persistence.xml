@@ -18,8 +18,9 @@
         <class>ch.bfh.srs.srv.entity.Timeframe</class>
 
         <properties>
-            <property name="openjpa.ConnectionURL" value="jdbc:postgresql://localhost:5432/postgres"/>
+            <property name="openjpa.ConnectionURL" value="jdbc:postgresql://localhost:5432/srs"/>
             <property name="openjpa.jdbc.DBDictionary" value="postgres"/>
+            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema"/>
             <property name="openjpa.ConnectionDriverName" value="org.postgresql.Driver"/>
             <property name="openjpa.ConnectionUserName" value="postgres"/>
             <property name="openjpa.ConnectionPassword" value=""/>

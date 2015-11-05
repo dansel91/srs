@@ -103,9 +103,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>9.4-1205-jdbc42</version>
         </dependency>
-
 
         <!-- Apache Commons -->
         <dependency>
@@ -168,6 +166,11 @@
                 <groupId>com.zenjava</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>8.1.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>9.4-1205-jdbc42</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
