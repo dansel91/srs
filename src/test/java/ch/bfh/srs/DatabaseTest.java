@@ -42,7 +42,7 @@ public class DatabaseTest {
         tf.setName("Test");
         em.persist(tf);
 
-        //truncateAllTables();
+        truncateAllTables();
         em.getTransaction().commit();
     }
 
@@ -62,13 +62,13 @@ public class DatabaseTest {
     }
 
     private void truncateAllTables() {
-        em.createNativeQuery("TRUNCATE exclusion CASCADE").executeUpdate();
-        em.createNativeQuery("TRUNCATE organisation CASCADE").executeUpdate();
-        em.createNativeQuery("TRUNCATE recursion CASCADE").executeUpdate();
-        em.createNativeQuery("TRUNCATE reservation CASCADE").executeUpdate();
-        em.createNativeQuery("TRUNCATE resource CASCADE").executeUpdate();
-        em.createNativeQuery("TRUNCATE role CASCADE").executeUpdate();
-        em.createNativeQuery("TRUNCATE timeframe CASCADE").executeUpdate();
-        em.createNativeQuery("TRUNCATE \"user\" CASCADE").executeUpdate();
+        em.createQuery("delete from Exclusion cascade").executeUpdate();
+        em.createQuery("delete from Organisation cascade").executeUpdate();
+        em.createQuery("delete from Recursion cascade").executeUpdate();
+        em.createQuery("delete from Reservation cascade").executeUpdate();
+        em.createQuery("delete from Resource cascade").executeUpdate();
+        em.createQuery("delete from Role cascade").executeUpdate();
+        em.createQuery("delete from Timeframe cascade").executeUpdate();
+        em.createQuery("delete from User cascade").executeUpdate();
     }
 }
