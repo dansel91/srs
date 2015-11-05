@@ -10,34 +10,43 @@ package ch.bfh.srs.srv.entity;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import java.sql.Timestamp;
 
+@NamedQueries({
+        @NamedQuery(name = "res.all",
+                query = "select r from Reservation r")
+})
 @Entity
 public class Reservation {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_reservation")
     private Integer idReservation;
 
     @Basic
-    @Column(name = "from")
+    @Column(name = "stmp_from")
     private Timestamp from;
 
     @Basic
-    @Column(name = "to")
+    @Column(name = "stmp_to")
     private Timestamp to;
 
     @Basic
     @Column(name = "full_day")
     private Boolean fullDay;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "resource_id", referencedColumnName = "id_resource")
     private Resource resource;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id_user")
     private User user;
 

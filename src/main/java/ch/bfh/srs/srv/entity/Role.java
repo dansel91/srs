@@ -10,14 +10,23 @@ package ch.bfh.srs.srv.entity;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import java.util.List;
 
+
+@NamedQueries({
+        @NamedQuery(name = "rl.all",
+                query = "select t from Role t")
+})
 @Entity
 public class Role {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_role")
     private Integer idRole;
 
@@ -29,8 +38,7 @@ public class Role {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "role", targetEntity = User.class,
-            fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "role", targetEntity = User.class)
     private List<User> users;
 
     public String getName() {
