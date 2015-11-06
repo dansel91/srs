@@ -22,19 +22,19 @@ public class UserService extends BaseService {
         throw new NotImplementedException();
     }
 
-    public User getUser(Integer userId){
+    public User getUser(int userId){
         throw new NotImplementedException();
     }
 
-    public boolean confirmUser(Integer userId){
+    public boolean confirmUser(int userId){
         throw new NotImplementedException();
     }
 
-    public boolean enableUser(Integer userId, boolean enable){
+    public boolean enableUser(int userId, boolean enable){
         throw new NotImplementedException();
     }
 
-    public boolean deleteUser(Integer userId){
+    public boolean deleteUser(int userId){
         throw new NotImplementedException();
     }
 
@@ -42,7 +42,7 @@ public class UserService extends BaseService {
         throw new NotImplementedException();
     }
 
-    public boolean register(String surname, String lastname, String password, String mail){
+    public boolean register(int surname, String lastname, String password, String mail){
         //Role = Anonymous
         throw new NotImplementedException();
     }

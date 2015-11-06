@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ResourceService extends BaseService {
 
-    public boolean addResource(Integer organisationId, String name){
+    public boolean addResource(int organisationId, String name){
         throw new NotImplementedException();
     }
 
@@ -22,15 +22,15 @@ public class ResourceService extends BaseService {
         throw new NotImplementedException();
     }
 
-    public Resource getResource(Integer id){
+    public Resource getResource(int id){
         throw new NotImplementedException();
     }
 
-    public boolean deleteResource(Integer resourceId){
+    public boolean deleteResource(int resourceId){
         throw new NotImplementedException();
     }
 
-    public boolean modResource(Integer resourceId, String name){
+    public boolean modResource(int resourceId, String name){
         throw new NotImplementedException();
     }
 }

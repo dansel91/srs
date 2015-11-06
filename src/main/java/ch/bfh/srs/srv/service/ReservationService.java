@@ -15,43 +15,43 @@ import java.util.List;
 
 public class ReservationService extends BaseService{
 
-    public boolean addReservation(Integer userId, DateTime start, DateTime end, boolean fullday){
+    public boolean addReservation(int userId, DateTime start, DateTime end, boolean fullday){
         throw new NotImplementedException();
     }
 
-    public boolean addRecurringReservation(Integer userId, DateTime start, DateTime end, boolean fullday, Integer day, Integer week, Integer month){
+    public boolean addRecurringReservation(int userId, DateTime start, DateTime end, boolean fullday, Integer day, Integer week, Integer month){
         throw new NotImplementedException();
     }
 
-    public boolean deleteReservation(Integer reservationId){
+    public boolean deleteReservation(int reservationId){
         throw new NotImplementedException();
     }
 
-    public boolean deleteRecurringReservation(Integer reservationId){
+    public boolean deleteRecurringReservation(int reservationId){
         throw new NotImplementedException();
     }
 
-    public boolean addExclusion(Integer reservationId, DateTime date){
+    public boolean addExclusion(int reservationId, DateTime date){
         throw new NotImplementedException();
     }
 
-    public boolean modRecurringReservation(Integer reservationId, DateTime start, DateTime end, boolean fullday, Integer day, Integer week, Integer month){
+    public boolean modRecurringReservation(int reservationId, DateTime start, DateTime end, boolean fullday, Integer day, Integer week, Integer month){
         throw new NotImplementedException();
     }
 
-    public boolean modReservation(Integer reservationId, DateTime start, DateTime end, boolean fullday){
+    public boolean modReservation(int reservationId, DateTime start, DateTime end, boolean fullday){
         throw new NotImplementedException();
     }
 
-    public List<Reservation> getReservationsbyResourceId(Integer resourceId){
+    public List<Reservation> getReservationsByResourceId(int resourceId){
         throw new NotImplementedException();
     }
 
-    public List<Reservation> getReservationsbyUserId(Integer userId){
+    public List<Reservation> getReservationsByUserId(int userId){
         throw new NotImplementedException();
     }
 
-    public List<Reservation> getReservationbyUserId(Integer userId, DateTime from, DateTime to){
+    public List<Reservation> getReservationByUserId(int userId, DateTime from, DateTime to){
         throw new NotImplementedException();
     }
 }

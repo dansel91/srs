@@ -12,15 +12,15 @@ import org.apache.commons.lang.NotImplementedException;
 
 public class TimeframeService extends BaseService {
 
-    public boolean addTimeframe(Integer resourceId, String name, DateTime start, DateTime end){
+    public boolean addTimeframe(int resourceId, String name, DateTime start, DateTime end){
         throw new NotImplementedException();
     }
 
-    public boolean modTimeframe(Integer timeframeId, String name, DateTime start, DateTime end){
+    public boolean modTimeframe(int timeframeId, String name, DateTime start, DateTime end){
         throw new NotImplementedException();
     }
 
-    public boolean deleteTimeframe(Integer timeframeId){
+    public boolean deleteTimeframe(int timeframeId){
         throw new NotImplementedException();
     }
 }
