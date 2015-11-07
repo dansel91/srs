@@ -2,7 +2,6 @@ package ch.bfh.srs;
 
 import ch.bfh.srs.srv.entity.User;
 import ch.bfh.srs.srv.service.UserService;
-import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -72,4 +71,51 @@ public class UserServiceTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void testGetUser(){
+        int userId = 1;
+        String surname = "Max";
+        String lastname = "Muster";
+        String password = "1234";
+        String mail = "max@muster.ch";
+        int role = 1;
+        try{
+            st.executeQuery("INSERT USER(surname, lastname, password, mail, role_id) VALUES (" + surname + "," + lastname + "," + password + "," + mail + "," + role + ")");
+            User rs = service.getUser(userId);
+            assertEquals(surname, rs.getSurname());
+            assertEquals(lastname, rs.getLastname());
+            assertEquals(password, rs.getPassword());
+            assertEquals(mail, rs.getMail());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testConfirmUser () {
+
+    }
+
+    @Test
+    public void testEnableUser() {
+
+    }
+
+    @Test
+    public void testDeleteUser() {
+
+    }
+
+    @Test
+    public void testLogin() {
+
+    }
+
+    @Test
+    public void testRegister() {
+
+    }
+
+
 }
