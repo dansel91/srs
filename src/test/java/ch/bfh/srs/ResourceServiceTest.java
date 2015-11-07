@@ -1,18 +1,17 @@
 package ch.bfh.srs;
 
 import ch.bfh.srs.srv.entity.Resource;
-import ch.bfh.srs.srv.service.ReservationService;
 import ch.bfh.srs.srv.service.ResourceService;
+import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.*;
 import java.util.List;
 
+import static junit.framework.TestCase.assertEquals;
+
 public class ResourceServiceTest {
-    private final String USERNAME="";
-    private final String PASSWORD="";
-    private final String URL = "jdbc:postgresql://localhost/testdb";
 
     Connection con = null;
     Statement st = null;
@@ -22,6 +21,9 @@ public class ResourceServiceTest {
     public void setUp(){
         service = new ResourceService();
         try {
+            String USERNAME = "";
+            String PASSWORD = "";
+            String URL = "jdbc:postgresql://localhost/testdb";
             con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             st = con.createStatement();
         } catch(SQLException sqlex){
@@ -32,12 +34,12 @@ public class ResourceServiceTest {
     @Test
     public void testAddResource(){
         int resourceId = 1;
-        int orgId = 1;
         String name = "foo";
         service.addResource(resourceId, name);
         try{
             ResultSet rs = st.executeQuery("SELECT * FROM Resource WHERE id_resource="+resourceId);
-//            compare resultset with created entry
+            assertEquals(resourceId, rs.getInt("id_resource"));
+            assertEquals(name, rs.getString("name"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -52,6 +54,8 @@ public class ResourceServiceTest {
         try{
             st.executeQuery("INSERT INTO Resource(id_resource, organisation_id, name) VALUES("+resourceId+","+orgId+","+name+")");
             List<Resource> resources = service.getResources();
+            Resource rs = resources.get(0);
+            assertEquals(name, rs.getName());
 //            compare first entry with created entry
         } catch (SQLException e) {
             e.printStackTrace();
@@ -66,7 +70,8 @@ public class ResourceServiceTest {
         String name = "foo";
         try{
             st.executeQuery("INSERT INTO Resource(id_resource, organisation_id, name) VALUES("+resourceId+","+orgId+","+name+")");
-            Resource res = service.getResource(resourceId);
+            Resource rs = service.getResource(resourceId);
+            assertEquals(name, rs.getName());
 //            compare first entry with created entry
         } catch (SQLException e) {
             e.printStackTrace();
@@ -83,7 +88,7 @@ public class ResourceServiceTest {
             st.executeQuery("INSERT INTO Resource(id_resource, organisation_id, name) VALUES("+resourceId+","+orgId+","+name+")");
             service.deleteResource(resourceId);
             ResultSet rs = st.executeQuery("SELECT * FROM Resource WHERE id_resource="+resourceId);
-//            Check if no entries
+            assertEquals(false, rs.next());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -100,7 +105,7 @@ public class ResourceServiceTest {
             st.executeQuery("INSERT INTO Resource(id_resource, organisation_id, name) VALUES(" + resourceId + "," + orgId + "," + name + ")");
             service.modResource(resourceId, name2);
             ResultSet rs = st.executeQuery("SELECT name FROM Resource WHERE id_resource="+resourceId);
-//            Check if name has changed
+            assertEquals(name2, rs.getString("name"));
         } catch (SQLException e) {
             e.printStackTrace();
         }

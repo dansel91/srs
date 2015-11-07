@@ -16,10 +16,6 @@ public class BaseService {
         bs.foo();
     }
 
-    private final String USERNAME="";
-    private final String PASSWORD="";
-    private final String URL = "jdbc:postgresql://localhost/testdb";
-
     Connection con = null;
     Statement st = null;
 
@@ -28,6 +24,9 @@ public class BaseService {
      */
     public BaseService(){
         try {
+            String USERNAME = "";
+            String PASSWORD = "";
+            String URL = "jdbc:postgresql://localhost/testdb";
             con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             st = con.createStatement();
         } catch(SQLException sqlex){

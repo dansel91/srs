@@ -1,16 +1,16 @@
 package ch.bfh.srs;
 
 import ch.bfh.srs.srv.service.TimeframeService;
+import junit.framework.Assert;
 import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.sql.*;
 
+import static junit.framework.TestCase.assertEquals;
+
 public class TimeframeServiceTest {
-    private final String USERNAME = "";
-    private final String PASSWORD = "";
-    private final String URL = "jdbc:postgresql://localhost/testdb";
 
     Connection con = null;
     Statement st = null;
@@ -20,6 +20,9 @@ public class TimeframeServiceTest {
     public void setUp() {
         service = new TimeframeService();
         try {
+            String USERNAME = "";
+            String PASSWORD = "";
+            String URL = "jdbc:postgresql://localhost/testdb";
             con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             st = con.createStatement();
         } catch (SQLException sqlex) {
@@ -30,15 +33,17 @@ public class TimeframeServiceTest {
     @Test
     public void testAddTimeframe() {
         int id_timeframe = 1;
-        int resourceid = 1;
         String name = "foo";
         DateTime start = DateTime.now();
         DateTime end = start.plusHours(1);
 
         try {
-            service.addTimeframe(resourceid, name, start, end);
+            service.addTimeframe(id_timeframe, name, start, end);
             ResultSet rs = st.executeQuery("SELECT * FROM Timeframe WHERE id_timeframe=" + id_timeframe);
-//            compare resultset with created entry
+            assertEquals(id_timeframe, rs.getInt("id_timeframe"));
+            assertEquals(name, rs.getString("name"));
+            assertEquals(start, DateTime.parse(rs.getString("start")));
+            assertEquals(end, DateTime.parse(rs.getString("end")));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -48,7 +53,6 @@ public class TimeframeServiceTest {
     @Test
     public void testModTimeframe() {
         int id_timeframe = 1;
-        int resourceid = 1;
         String name = "foo";
         String name2 = "foobar";
         DateTime start = DateTime.now();
@@ -59,7 +63,10 @@ public class TimeframeServiceTest {
             st.executeQuery("INSERT INTO Timeframe(id_timeframe, name, start, end) VALUES(" + id_timeframe + "," + name + "," + start + "," + end + ")");
             service.modTimeframe(id_timeframe, name2, start, end2);
             ResultSet rs = st.executeQuery("SELECT * FROM Timeframe WHERE id_timeframe=" + id_timeframe);
-//          Check if values have changed
+            assertEquals(id_timeframe, rs.getInt("id_timeframe"));
+            assertEquals(name2, rs.getString("name"));
+            assertEquals(start, DateTime.parse(rs.getString("start")));
+            assertEquals(end2, DateTime.parse(rs.getString("end")));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -76,7 +83,7 @@ public class TimeframeServiceTest {
             st.executeQuery("INSERT INTO Timeframe(id_timeframe, name, start, end) VALUES(" + id_timeframe + "," + name + "," + start + "," + end + ")");
             service.deleteTimeframe(id_timeframe);
             ResultSet rs = st.executeQuery("SELECT * FROM Timeframe WHERE id_timeframe=" + id_timeframe);
-//          Check if no entries there
+            assertEquals(false, rs.next());
         } catch (SQLException e) {
             e.printStackTrace();
         }
