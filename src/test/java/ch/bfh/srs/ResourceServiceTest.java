@@ -8,7 +8,9 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static junit.framework.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static junit.framework.Assert.assertEquals;
 
 public class ResourceServiceTest {
 
@@ -22,6 +24,8 @@ public class ResourceServiceTest {
     @Test(expected = NotImplementedException.class)
     public void testAddResource() {
         boolean added = service.addResource(1, "Tennisplatz 1");
+        Resource resourceEntity = service.getById(Resource.ID_NQUERY, 1);
+        assertEquals("Tennisplatz 1", resourceEntity.getName());
         assertTrue(added);
     }
 
@@ -40,6 +44,8 @@ public class ResourceServiceTest {
     @Test(expected = NotImplementedException.class)
     public void testDeleteResource() {
         boolean deleted = service.deleteResource(1);
+        Resource resourceEntity = service.getById(Resource.ID_NQUERY, 1);
+        assertNull(resourceEntity);
         assertTrue(deleted);
     }
 
@@ -47,6 +53,8 @@ public class ResourceServiceTest {
     public void testModResource() {
         boolean modified = service.modResource(1, "Tennisplatz 4");
         assertTrue(modified);
+        Resource resourceEntity = service.getById(Resource.ID_NQUERY, 1);
+        assertEquals("Tennistplatz 4", resourceEntity.getName());
     }
 
 }
