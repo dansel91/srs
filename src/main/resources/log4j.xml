@@ -10,7 +10,7 @@
         </layout>
     </appender>
 
-    <logger name="ch.bfh.innovation">
+    <logger name="ch.bfh.srs">
         <level value="DEBUG"/>
     </logger>
 
