@@ -12,25 +12,25 @@ import org.apache.commons.lang.NotImplementedException;
 
 import java.util.List;
 
-public class ResourceService extends BaseService {
+public class ResourceService extends BaseService<Resource> {
 
-    public boolean addResource(int organisationId, String name){
+    public boolean addResource(int organisationId, String name) {
         throw new NotImplementedException();
     }
 
-    public List<Resource> getResources(){
+    public List<Resource> getResources() {
         throw new NotImplementedException();
     }
 
-    public Resource getResource(int id){
+    public Resource getResource(int id) {
         throw new NotImplementedException();
     }
 
-    public boolean deleteResource(int resourceId){
+    public boolean deleteResource(int resourceId) {
         throw new NotImplementedException();
     }
 
-    public boolean modResource(int resourceId, String name){
+    public boolean modResource(int resourceId, String name) {
         throw new NotImplementedException();
     }
 }

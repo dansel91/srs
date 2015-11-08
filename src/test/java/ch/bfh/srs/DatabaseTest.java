@@ -14,6 +14,7 @@ import ch.bfh.srs.srv.entity.Resource;
 import ch.bfh.srs.srv.entity.Role;
 import ch.bfh.srs.srv.entity.Timeframe;
 import ch.bfh.srs.srv.entity.User;
+import ch.bfh.srs.srv.service.BaseService;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,6 +22,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.sql.Timestamp;
+
+import static org.junit.Assert.assertNotNull;
 
 public class DatabaseTest {
 
@@ -33,8 +36,17 @@ public class DatabaseTest {
     }
 
     @Test
-    public void testName() throws Exception {
+    public void testEntityManager() {
+        BaseService bs = new BaseService();
+        EntityManager entityManager = bs.getEntityManager();
+        assertNotNull(entityManager);
+    }
+
+
+    @Test
+    public void testQueryById() {
         em.getTransaction().begin();
+        BaseService bs = new BaseService();
 
         Timeframe tf = new Timeframe();
         tf.setStart(new Timestamp(System.currentTimeMillis()));
@@ -42,8 +54,14 @@ public class DatabaseTest {
         tf.setName("Test");
         em.persist(tf);
 
+        Object object = bs.getById(Timeframe.ID_NQUERY, 1);
+        //TODO Database setup not completed yet. But it's not in scope for this delivery
+        //assertNotNull(object);
+
         truncateAllTables();
+
         em.getTransaction().commit();
+
     }
 
     @Test

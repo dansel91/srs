@@ -12,37 +12,37 @@ import org.apache.commons.lang.NotImplementedException;
 
 import java.util.List;
 
-public class UserService extends BaseService {
+public class UserService extends BaseService<User> {
 
     public boolean addUser(String surname, String lastname, String password, String mail, Integer role) {
         throw new NotImplementedException();
     }
 
-    public List<User> getUsers(){
+    public List<User> getUsers() {
         throw new NotImplementedException();
     }
 
-    public User getUser(int userId){
+    public User getUser(int userId) {
         throw new NotImplementedException();
     }
 
-    public boolean confirmUser(int userId){
+    public boolean confirmUser(int userId) {
         throw new NotImplementedException();
     }
 
-    public boolean enableUser(int userId, boolean enable){
+    public boolean enableUser(int userId, boolean enable) {
         throw new NotImplementedException();
     }
 
-    public boolean deleteUser(int userId){
+    public boolean deleteUser(int userId) {
         throw new NotImplementedException();
     }
 
-    public boolean login(String mail, String password){
+    public boolean login(String mail, String password) {
         throw new NotImplementedException();
     }
 
-    public boolean register(String surname, String lastname, String password, String mail){
+    public boolean register(String surname, String lastname, String password, String mail) {
         //Role = Anonymous
         throw new NotImplementedException();
     }

@@ -24,11 +24,15 @@ import javax.persistence.OneToMany;
 import java.util.List;
 
 @NamedQueries({
-        @NamedQuery(name = "rsc.all",
-                query = "select t from Resource t")
+        @NamedQuery(name = Resource.ALL_NQUERY,
+                query = "select t from Resource t"),
+        @NamedQuery(name = Resource.ID_NQUERY,
+                query = "select t from Resource t where t.idResource = :id")
 })
 @Entity
 public class Resource {
+    public static final String ALL_NQUERY = "rsc.all";
+    public static final String ID_NQUERY = "rsc.id";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

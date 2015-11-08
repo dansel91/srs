@@ -20,11 +20,16 @@ import javax.persistence.NamedQuery;
 import java.sql.Timestamp;
 
 @NamedQueries({
-        @NamedQuery(name = "res.all",
-                query = "select r from Reservation r")
+        @NamedQuery(name = Reservation.ALL_NQUERY,
+                query = "select r from Reservation r"),
+        @NamedQuery(name = Reservation.ID_NQUERY,
+                query = "select t from Reservation t where t.idReservation = :id")
 })
 @Entity
 public class Reservation {
+    public static final String ALL_NQUERY = "res.all";
+    public static final String ID_NQUERY = "res.id";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_reservation")

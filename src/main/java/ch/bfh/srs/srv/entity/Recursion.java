@@ -21,11 +21,16 @@ import javax.persistence.OneToOne;
 import java.util.List;
 
 @NamedQueries({
-        @NamedQuery(name = "rec.all",
-                query = "select t from Recursion t")
+        @NamedQuery(name = Recursion.ALL_NQUERY,
+                query = "select t from Recursion t"),
+        @NamedQuery(name = Recursion.ID_NQUERY,
+                query = "select t from Recursion t where t.idRecursion = :id")
 })
 @Entity
 public class Recursion {
+    public static final String ALL_NQUERY = "rec.all";
+    public static final String ID_NQUERY = "rec.id";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_recursion")

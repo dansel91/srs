@@ -20,11 +20,16 @@ import java.util.List;
 
 
 @NamedQueries({
-        @NamedQuery(name = "rl.all",
-                query = "select t from Role t")
+        @NamedQuery(name = Role.ALL_NQUERY,
+                query = "select t from Role t"),
+        @NamedQuery(name = Role.ID_NQUERY,
+                query = "select t from Role t where t.idRole = :id")
 })
 @Entity
 public class Role {
+    public static final String ALL_NQUERY = "rl.all";
+    public static final String ID_NQUERY = "rl.id";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_role")
