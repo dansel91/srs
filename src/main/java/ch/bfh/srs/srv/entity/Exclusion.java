@@ -20,15 +20,21 @@ import javax.persistence.NamedQuery;
 import java.sql.Timestamp;
 
 @NamedQueries({
-        @NamedQuery(name = "ex.all",
-                query = "select t from Exclusion t")
+        @NamedQuery(name = Exclusion.ALL_NQUERY,
+                query = "select t from Exclusion t"),
+        @NamedQuery(name = Exclusion.ID_NQUERY,
+                query = "select t from Exclusion t where t.idExclusion = :id")
 })
 @Entity
 public class Exclusion {
+
+    public static final String ALL_NQUERY = "ex.all";
+    public static final String ID_NQUERY = "ex.id";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_exclusion")
-    private Integer idRecursion;
+    private Integer idExclusion;
 
     @Basic
     @Column(name = "date")

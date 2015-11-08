@@ -1,157 +1,132 @@
 package ch.bfh.srs;
 
+import ch.bfh.srs.srv.entity.Exclusion;
 import ch.bfh.srs.srv.entity.Reservation;
-import ch.bfh.srs.srv.entity.Resource;
 import ch.bfh.srs.srv.service.ReservationService;
-import junit.framework.Assert;
+import org.apache.commons.lang.NotImplementedException;
 import org.joda.time.DateTime;
+import org.joda.time.Period;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.xml.transform.Result;
-import java.sql.*;
+import javax.persistence.EntityManager;
+import java.sql.Timestamp;
 import java.util.List;
 
+import static junit.framework.Assert.*;
 import static junit.framework.TestCase.assertEquals;
 
 public class ReservationServiceTest {
 
-    Connection con = null;
-    Statement st = null;
     ReservationService service;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         service = new ReservationService();
-        try {
-            String USERNAME = "";
-            String PASSWORD = "";
-            String URL = "jdbc:postgresql://localhost/testdb";
-            con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            st = con.createStatement();
-        } catch(SQLException sqlex){
-            System.out.print(sqlex.getMessage());
-        }
     }
 
-    @Test
-    public void testAddReservation(){
-        int userId=1;
-        DateTime start = DateTime.now();
-        DateTime end = start.plusHours(1);
-        boolean fullday = false;
-        service.addReservation(userId, start, end, fullday);
-        try {
-            ResultSet rs = st.executeQuery("SELECT userId, start, end, fullday FROM Reservation WHERE user_id="+userId);
-            assertEquals(userId, rs.getInt("user_id"));
-            assertEquals(start, DateTime.parse(rs.getString("start")));
-            assertEquals(end, DateTime.parse(rs.getString("end")));
-            assertEquals(fullday, rs.getBoolean("fullday"));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        removeReservations();
+    @Test(expected = NotImplementedException.class)
+    public void testAddReservation() {
+        boolean performed = service.addReservation(1, DateTime.now(), DateTime.now(), false);
+        assertEquals(true, performed);
+        Reservation reservationEntity = service.getById(Reservation.ID_NQUERY, 1);
+        assertNotNull(reservationEntity);
     }
 
-    @Test
+    @Test(expected = NotImplementedException.class)
+    public void testAddRecurringReservation() {
+        DateTime from = DateTime.now();
+        DateTime to = DateTime.now().plus(Period.hours(2));
+        boolean performed = service.addRecurringReservation(1, from, to, false, 1, null, null);
+        assertEquals(true, performed);
+        Reservation reservationEntity = service.getById(Reservation.ID_NQUERY, 1);
+        assertNotNull(reservationEntity);
+        assertEquals(new Timestamp(from.getMillis()), reservationEntity.getFrom());
+        assertEquals(new Timestamp(to.getMillis()), reservationEntity.getTo());
+        assertFalse(reservationEntity.getFullDay());
+        //TODO: Recurring field assertion (no entity object so far)
+    }
+
+
+    @Test(expected = NotImplementedException.class)
     public void testDeleteReservation() {
-        int id = 1;
-        DateTime start = DateTime.now();
-        DateTime end = start.plusHours(1);
-        try {
-            st.executeQuery("INSERT INTO Reservation(id_reservation, resource_id, user_id, from, to, full_day) VALUES("+id+", 1, 1, "+start+","+end+","+ false+")");
-            service.deleteReservation(id);
-            ResultSet rs = st.executeQuery("SELECT * FROM Reservation WHERE id_reservation="+id);
-            assertEquals(false, rs.next());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        removeReservations();
+        int resId = 1;
+        boolean deleted = service.deleteReservation(resId);
+        assertEquals(true, deleted);
+
+        List<Reservation> reservations = service.getReservationsByResourceId(resId);
+        assertTrue(reservations.isEmpty());
+        Reservation reservationEntity = service.getById(Reservation.ID_NQUERY, resId);
+        assertNull(reservationEntity);
     }
 
-    @Test
+    @Test(expected = NotImplementedException.class)
+    public void testDeleteRecurringReservation() {
+        boolean deleted = service.deleteRecurringReservation(1);
+        assertTrue(deleted);
+        Reservation reservationEntity = service.getById(Reservation.ID_NQUERY, 1);
+        assertNull(reservationEntity);
+    }
+
+    @Test(expected = NotImplementedException.class)
     public void testModReservation() {
-        int id = 1;
-        DateTime start = DateTime.now();
-        DateTime end = start.plusHours(1);
-        try{
-            st.executeQuery("INSERT INTO Reservation(id_reservation, resource_id, user_id, from, to, full_day) VALUES("+id+", 1, 1, "+start+","+end+","+ false+")");
-            end = start.plusHours(2);
-            service.modReservation(id, start, end, false);
-            ResultSet rs = st.executeQuery("SELECT end FROM Reservation WHERE id=" + id);
-            assertEquals(end, DateTime.parse(rs.getString("end")));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        removeReservations();
+        DateTime from = DateTime.now();
+        DateTime to = DateTime.now().plus(Period.hours(4));
+        boolean modified = service.modReservation(1, from, to, false);
+        assertTrue(modified);
+        Reservation reservationEntity = service.getById(Reservation.ID_NQUERY, 1);
+        assertNotNull(reservationEntity);
+        assertEquals(new Timestamp(from.getMillis()), reservationEntity.getFrom());
+        assertEquals(new Timestamp(to.getMillis()), reservationEntity.getTo());
+        assertFalse(reservationEntity.getFullDay());
     }
 
-    @Test
-    public void testGetReservationsByUserId(){
-        int id = 1;
-        int resourceId=1;
-        int userId = 1;
-        DateTime start = DateTime.now();
-        DateTime end = start.plusHours(1);
-        try {
-            st.executeQuery("INSERT INTO Reservation(id_reservation, resource_id, user_id, from, to, full_day) VALUES("+id+","+resourceId+","+userId+", "+start+","+end+","+ false+")");
-            List<Reservation> reservations = service.getReservationsByUserId(userId);
-            Reservation res = reservations.get(0);
-            assertEquals(start, res.getFrom());
-            assertEquals(end, res.getTo());
-//            compare other attributes
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        removeReservations();
+    @Test(expected = NotImplementedException.class)
+    public void testModRecurringReservation() {
+        DateTime from = DateTime.now();
+        DateTime to = DateTime.now().plus(Period.hours(4));
+        boolean modified = service.modRecurringReservation(1, from, to, false, 1, null, null);
+        assertTrue(modified);
+        Reservation reservationEntity = service.getById(Reservation.ID_NQUERY, 1);
+        assertNotNull(reservationEntity);
+        assertEquals(new Timestamp(from.getMillis()), reservationEntity.getFrom());
+        assertEquals(new Timestamp(to.getMillis()), reservationEntity.getTo());
+        assertFalse(reservationEntity.getFullDay());
     }
 
-    @Test
-    public void testGetReservationsByResourceId(){
-        int id = 1;
-        int userid = 1;
-        int resourceId= 1;
-        DateTime start = DateTime.now();
-        DateTime end = start.plusHours(1);
-        try {
-            st.executeQuery("INSERT INTO Reservation(id_reservation, resource_id, user_id, from, to, full_day) VALUES("+id+","+resourceId+","+userid+", "+start+","+end+","+ false+")");
-            List<Reservation> reservations = service.getReservationsByResourceId(resourceId);
-            Reservation res = reservations.get(0);
-            assertEquals(start, res.getFrom());
-            assertEquals(end, res.getTo());
-//            compare first entry in List with created entry
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        removeReservations();
+    @Test(expected = NotImplementedException.class)
+    public void testGetReservationsByUserId() {
+        List<Reservation> results = service.getReservationsByUserId(1);
+        assertTrue(results.size() == 1);
+        Reservation reservationEntity = service.getById(Reservation.ID_NQUERY, 1);
+        assertEquals(reservationEntity, results.get(0));
     }
 
-    @Test
-    public void testReservationByUserId(){
-        int id = 1;
-        int userid = 1;
-        int resourceId= 1;
-        DateTime start = DateTime.now();
-        DateTime end = start.plusHours(1);
-        try {
-            st.executeQuery("INSERT INTO Reservation(id_reservation, resource_id, user_id, from, to, full_day) VALUES("+id+","+resourceId+","+userid+", "+start+","+end+","+ false+")");
-            List<Reservation> reservations = service.getReservationByUserId(userid, start, end);
-            Reservation res = reservations.get(0);
-            assertEquals(start, res.getFrom());
-            assertEquals(end, res.getTo());
-//            compare first entry in List with created entry
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        removeReservations();
+    @Test(expected = NotImplementedException.class)
+    public void testGetReservationsByUserIdWithRange() {
+        DateTime from = DateTime.now().minus(Period.days(10));
+        DateTime to = DateTime.now();
+        List<Reservation> results = service.getReservationByUserId(1, from, to);
+        assertTrue(results.size() == 1);
+        Reservation reservationEntity = service.getById(Reservation.ID_NQUERY, 1);
+        assertEquals(reservationEntity, results.get(0));
     }
 
-    private void removeReservations(){
-        try{
-            st.executeQuery("DELETE * FROM Reservation");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    @Test(expected = NotImplementedException.class)
+    public void testGetReservationsByResourceId() {
+        List<Reservation> results = service.getReservationsByResourceId(1);
+        assertTrue(results.size() == 1);
+        Reservation reservationEntity = service.getById(Reservation.ID_NQUERY, 1);
+        assertEquals(reservationEntity, results.get(0));
+    }
+
+    @Test(expected = NotImplementedException.class)
+    public void testAddExclusion() {
+        boolean added = service.addExclusion(1, DateTime.now());
+        assertTrue(added);
+        EntityManager em = service.getEntityManager();
+        Exclusion exclusion = em.createNamedQuery(Exclusion.ID_NQUERY, Exclusion.class).setParameter("id", 1).getSingleResult();
+        assertNotNull(exclusion);
     }
 }
 

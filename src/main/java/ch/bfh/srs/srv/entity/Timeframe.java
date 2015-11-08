@@ -23,11 +23,16 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @NamedQueries({
-        @NamedQuery(name = "tf.all",
-                query = "select t from Timeframe t")
+        @NamedQuery(name = Timeframe.ALL_NQUERY,
+                query = "select t from Timeframe t"),
+        @NamedQuery(name = Timeframe.ID_NQUERY,
+                query = "select t from Timeframe t where t.idTimeframe = :id")
 })
 @Entity
 public class Timeframe {
+    public static final String ALL_NQUERY = "tf.all";
+    public static final String ID_NQUERY = "tf.id";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_timeframe")

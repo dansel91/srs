@@ -13,45 +13,45 @@ import org.joda.time.DateTime;
 
 import java.util.List;
 
-public class ReservationService extends BaseService{
+public class ReservationService extends BaseService<Reservation> {
 
-    public boolean addReservation(int userId, DateTime start, DateTime end, boolean fullday){
+    public boolean addReservation(int userId, DateTime start, DateTime end, boolean fullday) {
         throw new NotImplementedException();
     }
 
-    public boolean addRecurringReservation(int userId, DateTime start, DateTime end, boolean fullday, Integer day, Integer week, Integer month){
+    public boolean addRecurringReservation(int userId, DateTime start, DateTime end, boolean fullday, Integer day, Integer week, Integer month) {
         throw new NotImplementedException();
     }
 
-    public boolean deleteReservation(int reservationId){
+    public boolean deleteReservation(int reservationId) {
         throw new NotImplementedException();
     }
 
-    public boolean deleteRecurringReservation(int reservationId){
+    public boolean deleteRecurringReservation(int reservationId) {
         throw new NotImplementedException();
     }
 
-    public boolean addExclusion(int reservationId, DateTime date){
+    public boolean addExclusion(int reservationId, DateTime date) {
         throw new NotImplementedException();
     }
 
-    public boolean modRecurringReservation(int reservationId, DateTime start, DateTime end, boolean fullday, Integer day, Integer week, Integer month){
+    public boolean modRecurringReservation(int reservationId, DateTime start, DateTime end, boolean fullday, Integer day, Integer week, Integer month) {
         throw new NotImplementedException();
     }
 
-    public boolean modReservation(int reservationId, DateTime start, DateTime end, boolean fullday){
+    public boolean modReservation(int reservationId, DateTime start, DateTime end, boolean fullday) {
         throw new NotImplementedException();
     }
 
-    public List<Reservation> getReservationsByResourceId(int resourceId){
+    public List<Reservation> getReservationsByResourceId(int resourceId) {
         throw new NotImplementedException();
     }
 
-    public List<Reservation> getReservationsByUserId(int userId){
+    public List<Reservation> getReservationsByUserId(int userId) {
         throw new NotImplementedException();
     }
 
-    public List<Reservation> getReservationByUserId(int userId, DateTime from, DateTime to){
+    public List<Reservation> getReservationByUserId(int userId, DateTime from, DateTime to) {
         throw new NotImplementedException();
     }
 }

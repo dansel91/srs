@@ -22,12 +22,17 @@ import javax.persistence.Table;
 import java.util.List;
 
 @NamedQueries({
-        @NamedQuery(name = "usr.all",
-                query = "select t from User t")
+        @NamedQuery(name = User.ALL_NQUERY,
+                query = "select t from User t"),
+        @NamedQuery(name = User.ID_NQUERY,
+                query = "select t from User t where t.idUser = :id")
 })
 @Entity
 @Table(name = "\"user\"")
 public class User {
+    public static final String ALL_NQUERY = "usr.all";
+    public static final String ID_NQUERY = "usr.id";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
