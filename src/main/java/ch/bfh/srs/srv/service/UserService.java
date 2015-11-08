@@ -42,7 +42,7 @@ public class UserService extends BaseService {
         throw new NotImplementedException();
     }
 
-    public boolean register(int surname, String lastname, String password, String mail){
+    public boolean register(String surname, String lastname, String password, String mail){
         //Role = Anonymous
         throw new NotImplementedException();
     }

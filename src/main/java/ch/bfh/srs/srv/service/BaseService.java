@@ -7,42 +7,6 @@
  */
 package ch.bfh.srs.srv.service;
 
-import java.sql.*;
-
 public class BaseService {
 
-    public static void main(String[] args){
-        BaseService bs = new BaseService();
-        bs.foo();
-    }
-
-    Connection con = null;
-    Statement st = null;
-
-    /**
-     * Constructor sets up DB connection
-     */
-    public BaseService(){
-        try {
-            String USERNAME = "";
-            String PASSWORD = "";
-            String URL = "jdbc:postgresql://localhost/testdb";
-            con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            st = con.createStatement();
-        } catch(SQLException sqlex){
-            System.out.print(sqlex.getMessage());
-        }
-    }
-
-    public void foo() {
-        try {
-            ResultSet rs = st.executeQuery("SELECT VERSION()");
-            if (rs.next()) {
-                System.out.println(rs.getString(1));
-            }
-        } catch (Exception ex) {
-            System.out.print(ex.getMessage());
-        }
-
-    }
 }
