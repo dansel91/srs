@@ -16,6 +16,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <scm>
+        <connection>scm:git:git@github.com:imscaradh/srs.git</connection>
+        <developerConnection>scm:git:git@github.com:imscaradh/srs.git</developerConnection>
+    </scm>
+
     <developers>
         <developer>
             <id>hirtd2</id>
